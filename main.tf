@@ -89,11 +89,11 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  owners = "099720109477"
+   owners = ["099720109477"] # Canonical
 }
 
 resource "aws_instance" "ubuntu_aeis_instance" {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.macro"
+  instance_type = "t2.micro"
   subnet_id = aws_subnet.public_subnet.id
 }
